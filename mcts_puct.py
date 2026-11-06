@@ -41,7 +41,7 @@ class MCTS:
         # init root board after simulatons
         self.board = board
         # root state's key
-        root_key = hash(self.root.tostring())
+        root_key = hash(self.root.tobytes())                       # Updated deprecated NumPy func from .tostring() --> .tobytes()
         # argmax Q or argmin Q
         action = self._selection(root_key, c_pucb=0)
         return action
@@ -58,7 +58,7 @@ class MCTS:
             is_expansion = True
 
             while not done:
-                key = hash(self.state.tostring())
+                key = hash(self.state.tobytes())                    # Updated deprecated NumPy func from .tostring() --> .tobytes() 
                 # search my tree
                 if key in self.tree:
                     # selection

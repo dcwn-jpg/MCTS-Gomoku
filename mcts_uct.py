@@ -56,7 +56,7 @@ class MCTS:
         self.legal_move = argwhere(board_fill == 0).flatten()
         self.no_legal_move = argwhere(board_fill != 0).flatten()
         # root state's key
-        root_key = hash(self.root.tostring())
+        root_key = hash(self.root.tobytes())                        # Updated deprecated NumPy func from .tostring() --> .tobytes()
         # argmax Q
         action = self._selection(root_key, c_ucb=0)
         print('')
@@ -79,7 +79,7 @@ class MCTS:
                 board_fill = self.board[CURRENT] + self.board[OPPONENT]
                 self.legal_move = argwhere(board_fill == 0).flatten()
                 self.no_legal_move = argwhere(board_fill != 0).flatten()
-                key = hash(self.state.tostring())
+                key = hash(self.state.tobytes())                            # Updated deprecated NumPy func from .tostring() --> .tobytes()
                 # search my tree
                 if key in self.tree:
                     # selection
