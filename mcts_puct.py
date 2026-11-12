@@ -25,12 +25,12 @@ OPPONENT = 1
 COLOR = 2
 BLACK = 1
 WHITE = 0
-BOARD_SIZE = 9      # (Original value of 9)
+BOARD_SIZE = 7      # (Original value of 9)
 HISTORY = 2
 ## Number of iterations per move  (Original value of 800)
-N_SIMUL = 800
+N_SIMUL = 500
 ## Total number of games to be played  (Original value of 5)
-GAME = 5
+GAME = 1
 
 
 class MCTS:
@@ -82,7 +82,7 @@ class MCTS:
                 ## 1. SELECTION PHASE (Searches the tree)
                 if key in self.tree:
                     # Calls PUCT based _selection() with set exploration value[c_pucb={1}] (Original value of 5)
-                    action = self._selection(key, c_pucb=5)
+                    action = self._selection(key, c_pucb=1)
                     # Remember for backup
                     self.action_memory.appendleft(action)
                     self.key_memory.appendleft(key)
